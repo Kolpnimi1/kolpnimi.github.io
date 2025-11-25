@@ -41,6 +41,9 @@
             color: var(--text);
             line-height: 1.7;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         /* עיצוב כותרת האתר */
@@ -135,13 +138,14 @@
         }
         
         /* עיצוב תוכן ראשי */
-        .container {
+        .main-container {
             max-width: 1200px;
             margin: 3rem auto;
             padding: 0 1.5rem;
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 2.5rem;
+            flex-grow: 1;
         }
         
         /* עיצוב כרטיסי מאמרים */
@@ -670,7 +674,7 @@
         
         /* עיצוב רספונסיבי */
         @media (max-width: 768px) {
-            .container {
+            .main-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -754,7 +758,7 @@
     </div>
     
     <!-- תוכן ראשי -->
-    <div class="container">
+    <div class="main-container">
     
        <!-- אזור המאמרים -->
         <main>
