@@ -134,14 +134,18 @@
             transform: scaleX(1);
         }
         
-        /* עיצוב תוכן ראשי */
+        /* עיצוב תוכן ראשי - שיניתי כאן! */
         .container {
             max-width: 1200px;
             margin: 3rem auto;
             padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2.5rem;
+            display: block; /* שיניתי מ-grid ל-block */
+        }
+        
+        /* אזור המאמרים */
+        .articles-area {
+            display: block; /* המאמרים יהיו אחד מתחת לשני */
+            width: 100%;
         }
         
         /* עיצוב כרטיסי מאמרים */
@@ -153,6 +157,8 @@
             margin-bottom: 2.5rem;
             transition: var(--transition);
             position: relative;
+            display: block; /* זה כברירת מחדל, אבל מוסיף לבהירות */
+            width: 100%;
         }
         
         .article-card::before {
@@ -264,7 +270,7 @@
             box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
         }
         
-        /* עיצוב סרגל צד */
+        /* עיצוב סרגל צד - העברתי אותו ליד המאמרים */
         .sidebar {
             background-color: white;
             border-radius: var(--border-radius);
@@ -272,6 +278,8 @@
             box-shadow: var(--shadow);
             position: sticky;
             top: 100px;
+            width: 100%;
+            margin-top: 2rem;
         }
         
         .sidebar-section {
@@ -668,11 +676,28 @@
             }
         }
         
-        /* עיצוב רספונסיבי */
+        /* עיצוב רספונסיבי - שיניתי גם כאן! */
+        @media (min-width: 769px) {
+            .container {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 2.5rem;
+            }
+            
+            .articles-area {
+                grid-column: 1;
+            }
+            
+            .sidebar {
+                grid-column: 2;
+                margin-top: 0;
+                width: auto;
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                display: block;
             }
             
             .footer-content {
@@ -755,25 +780,25 @@
     
     <!-- תוכן ראשי -->
     <div class="container">
-    
-       <!-- אזור המאמרים -->
-     <!-- מאמר 2 - ילדים שקורסים בשקט -->
-<article class="article-card">
-    <div class="article-image" style="background-image: url('depressed-child-school.jpg');">
-        <div class="image-text">דיכאון וחרם בילדות</div>
-    </div>
-    <div class="article-content">
-        <h2 class="article-title">הילדים שקורסים בשקט: הדיכאון והחרם שמוחקים להם את הילדות</h2>
-        <div class="article-meta">
-            <span><i class="far fa-calendar"></i> פורסם ב-20 בנובמבר 2025</span>
-            <span><i class="far fa-clock"></i> זמן קריאה: 10 דקות</span>
-        </div>
-        <p class="article-excerpt">
-            בני נוער לא תמיד אומרים שמשהו קורה להם — הם מראים את זה. דיכאון וחרם הם לא שתי תופעות נפרדות. כשהם נפגשים — זה ילד שקורס ואף אחד לא שם לב.
-        </p>
-        <a href="children-depression-bullying.html" class="read-more">קראו עוד <i class="fas fa-arrow-left"></i></a>
-    </div>
-</article>
+        <!-- אזור המאמרים - אחד מתחת לשני -->
+        <div class="articles-area">
+           <!-- מאמר 2 - ילדים שקורסים בשקט -->
+           <article class="article-card">
+               <div class="article-image" style="background-image: url('depressed-child-school.jpg');">
+                   <div class="image-text">דיכאון וחרם בילדות</div>
+               </div>
+               <div class="article-content">
+                   <h2 class="article-title">הילדים שקורסים בשקט: הדיכאון והחרם שמוחקים להם את הילדות</h2>
+                   <div class="article-meta">
+                       <span><i class="far fa-calendar"></i> פורסם ב-20 בנובמבר 2025</span>
+                       <span><i class="far fa-clock"></i> זמן קריאה: 10 דקות</span>
+                   </div>
+                   <p class="article-excerpt">
+                       בני נוער לא תמיד אומרים שמשהו קורה להם — הם מראים את זה. דיכאון וחרם הם לא שתי תופעות נפרדות. כשהם נפגשים — זה ילד שקורס ואף אחד לא שם לב.
+                   </p>
+                   <a href="children-depression-bullying.html" class="read-more">קראו עוד <i class="fas fa-arrow-left"></i></a>
+               </div>
+           </article>
            
            <!-- מאמר 1 -->
            <article class="article-card">
@@ -792,7 +817,7 @@
                    <a href="mentalhelthman.html" class="read-more">קראו עוד <i class="fas fa-arrow-left"></i></a>
                </div>
            </article>
-         
+        </div>
         
         <!-- סרגל צד -->
         <aside class="sidebar">
